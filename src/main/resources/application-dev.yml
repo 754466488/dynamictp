@@ -1,13 +1,16 @@
 spring:
   application:
-    name: dynamic-tp
+    name: dynamic-tp-nacos-demo
 nacos:
   config:
     server-addr: 119.3.171.9:8848
     type: yaml
-    data-ids: dynamic-tp-dev.yml
+    data-ids: dynamic-tp-nacos-demo-dev.yml
     auto-refresh: true
-    group: DEFAULT_GROUP
+    group: ${spring.application.name}
+    namespace: ${spring.profiles.active}
     bootstrap:
       enable: true
       log-enable: true
+
+
