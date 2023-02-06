@@ -28,7 +28,7 @@ public class TestController {
 	 * @Return:
 	 */
 	@GetMapping("/thread/customize/test")
-	public String busThreadTest() {
+	public String customizeTest() {
 		new Thread(() -> {
 			try {
 				task();
