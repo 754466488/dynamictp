@@ -1,7 +1,5 @@
 package com.dzw.dynamic;
 
-import com.dtp.core.DtpRegistry;
-import com.dtp.core.thread.DtpExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +16,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @RestController
 public class TestController {
 	@Autowired
-	private ThreadPoolExecutor threadPoolExecutor;
+	private ThreadPoolExecutor threadPoolExecutor2;
 
 	/**
 	 * @Description: 测试自定义线程池
@@ -41,7 +39,7 @@ public class TestController {
 
 	public void task() throws InterruptedException {
 		for (int i = 0; i < 100; i++) {
-			threadPoolExecutor.execute(() -> {
+			threadPoolExecutor2.execute(() -> {
 				try {
 					log.info("i am dynamic-tp-test-2 task");
 					Thread.sleep(2000);
@@ -50,5 +48,22 @@ public class TestController {
 				}
 			});
 		}
+	}
+
+	/**
+	 * @Description: 测试undertow线程池
+	 * @Author: lyb
+	 * @Date: 2023/2/6 11:22 上午
+	 * @Version: 1.0
+	 * @Return:
+	 */
+	@GetMapping("/thread/undertow/test")
+	public String undertowTest() {
+		try {
+			Thread.sleep(10000L);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "success";
 	}
 }

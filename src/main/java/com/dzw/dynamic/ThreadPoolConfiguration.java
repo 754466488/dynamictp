@@ -26,13 +26,27 @@ public class ThreadPoolConfiguration {
 	@Bean
 	public ThreadPoolExecutor threadPoolExecutor() {
 		return ThreadPoolBuilder.newBuilder()
-				.threadPoolName("dynamic-tp-test-2")
+				.threadPoolName("threadPoolExecutor")
 				.corePoolSize(2)
-				.maximumPoolSize(4)
+				.maximumPoolSize(2)
 				.keepAliveTime(6000L)
 				.timeUnit(TimeUnit.MILLISECONDS)
 				.workQueue(QueueTypeEnum.ARRAY_BLOCKING_QUEUE.getName(), 2, true)
 				.rejectedExecutionHandler(RejectedTypeEnum.DISCARD_POLICY.getName())
 				.buildDynamic();
 	}
+
+	@Bean
+	public ThreadPoolExecutor threadPoolExecutor2() {
+		return ThreadPoolBuilder.newBuilder()
+				.threadPoolName("threadPoolExecutor2")
+				.corePoolSize(2)
+				.maximumPoolSize(2)
+				.keepAliveTime(6000L)
+				.timeUnit(TimeUnit.MILLISECONDS)
+				.workQueue(QueueTypeEnum.ARRAY_BLOCKING_QUEUE.getName(), 2, true)
+				.rejectedExecutionHandler(RejectedTypeEnum.DISCARD_POLICY.getName())
+				.buildDynamic();
+	}
+
 }
