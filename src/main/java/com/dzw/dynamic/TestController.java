@@ -20,8 +20,15 @@ public class TestController {
 	@Autowired
 	private ThreadPoolExecutor threadPoolExecutor;
 
-	@GetMapping("/dtp-example/test")
-	public String test() {
+	/**
+	 * @Description: 测试自定义线程池
+	 * @Author: lyb
+	 * @Date: 2023/2/6 11:18 上午
+	 * @Version: 1.0
+	 * @Return:
+	 */
+	@GetMapping("/thread/customize/test")
+	public String busThreadTest() {
 		new Thread(() -> {
 			try {
 				task();
