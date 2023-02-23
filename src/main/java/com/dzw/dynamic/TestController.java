@@ -16,7 +16,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @RestController
 public class TestController {
 	@Autowired
-	private ThreadPoolExecutor threadPoolExecutor2;
+	private ThreadPoolExecutor threadPoolExecutor;
 
 	/**
 	 * @Description: 测试自定义线程池
@@ -39,7 +39,7 @@ public class TestController {
 
 	public void task() throws InterruptedException {
 		for (int i = 0; i < 100; i++) {
-			threadPoolExecutor2.execute(() -> {
+			threadPoolExecutor.execute(() -> {
 				try {
 					log.info("i am dynamic-tp-test-2 task");
 					Thread.sleep(2000);
