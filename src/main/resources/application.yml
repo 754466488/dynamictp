@@ -2,4 +2,4 @@ server:
   port: 8989
 spring:
   profiles:
-    active: ${spring.profiles.active}
+    active: test
