@@ -24,9 +24,9 @@ public class ThreadPoolConfiguration {
 	}
 
 	@Bean
-	public ThreadPoolExecutor threadPoolExecutor() {
+	public ThreadPoolExecutor dynamicExecutor() {
 		return ThreadPoolBuilder.newBuilder()
-				.threadPoolName("threadPoolExecutor")
+				.threadPoolName("dynamicExecutor")
 				.corePoolSize(2)
 				.maximumPoolSize(2)
 				.keepAliveTime(6000L)
@@ -37,9 +37,9 @@ public class ThreadPoolConfiguration {
 	}
 
 	@Bean
-	public ThreadPoolExecutor threadPoolExecutor2() {
+	public ThreadPoolExecutor dynamicExecutor2() {
 		return ThreadPoolBuilder.newBuilder()
-				.threadPoolName("threadPoolExecutor2")
+				.threadPoolName("dynamicExecutor2")
 				.corePoolSize(2)
 				.maximumPoolSize(2)
 				.keepAliveTime(6000L)
@@ -48,5 +48,4 @@ public class ThreadPoolConfiguration {
 				.rejectedExecutionHandler(RejectedTypeEnum.DISCARD_POLICY.getName())
 				.buildDynamic();
 	}
-
 }

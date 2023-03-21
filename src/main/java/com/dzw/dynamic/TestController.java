@@ -1,5 +1,7 @@
 package com.dzw.dynamic;
 
+import com.dtp.core.DtpRegistry;
+import com.dtp.core.thread.DtpExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @RestController
 public class TestController {
 	@Autowired
-	private ThreadPoolExecutor threadPoolExecutor;
+	private ThreadPoolExecutor dynamicExecutor;
 
 	/**
 	 * @Description: 测试自定义线程池
@@ -38,8 +40,9 @@ public class TestController {
 	}
 
 	public void task() throws InterruptedException {
+//		DtpExecutor threadPoolExecutor = DtpRegistry.getDtpExecutor("dynamicExecutor");
 		for (int i = 0; i < 100; i++) {
-			threadPoolExecutor.execute(() -> {
+			dynamicExecutor.execute(() -> {
 				try {
 					log.info("i am dynamic-tp-test-2 task");
 					Thread.sleep(2000);
